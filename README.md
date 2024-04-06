@@ -1,9 +1,10 @@
 # SkyHigh Modifications Number Plate Creator
 
+### PURCHASE & DOWNLOAD ***[V1.0.0 PUBLIC](https://skyhigh-modifications.tebex.io/package/6144426)***
+
 The SkyHigh Modifications Number Plate Creator is a versatile and user-friendly tool designed to empower users in crafting and customizing number plates for various creative projects. Whether you're designing custom number plates for Grand Theft Auto V vehicles or exploring other imaginative endeavors, this tool offers a seamless and intuitive platform to bring your ideas to life.
 
-## Key Features
-
+## Key Features:
 - **Plate Customization:** Users can enter their desired number plate text and slogan, which will be dynamically displayed on both the front and rear plates.
 - **Style Selection:** The tool allows users to choose between standard and old plate styles, each with its unique design characteristics.
 - **Badge Options:** Users can add an electric badge to their plates, enhancing visual appeal and customization possibilities.
@@ -15,8 +16,7 @@ The SkyHigh Modifications Number Plate Creator is a versatile and user-friendly 
 - **Loading Screen:** A loading screen is displayed while the content is being loaded, providing a smooth user experience.
 - **Update Checker:** The tool checks for the latest version available on GitHub, providing users with information about updates and new features.
 
-## Usage
-
+## Usage:
 1. Enter your desired number plate text and slogan (if applicable).
 2. Customize your plate using the provided options for style, badge, border, and more.
 3. Preview your design in real-time to ensure it meets your specifications.
@@ -26,9 +26,7 @@ The SkyHigh Modifications Number Plate Creator is a versatile and user-friendly 
 Get Creative with SkyHigh Modifications Number Plate Creator and make your vehicle designs stand out!
 
 ## Warnings
-
 **Important:** Please review the LICENSE file before using this software.
 
 ## Feedback and Support
-
 We welcome your suggestions and feedback! Open a ticket in our [Discord](https://discord.com/invite/tKQgdQuJYF) to share your thoughts.
