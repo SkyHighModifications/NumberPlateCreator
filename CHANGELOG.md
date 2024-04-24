@@ -1,5 +1,11 @@
 # Changelog 
 
+## V1.1.1 Public
+
+- Resolved issue with update verification failure from GitHub.
+
+#
+
 ## V1.1.0 Public
 
 - Addressed visual inconsistencies such as adjusting the plate's background color and enhancing text legibility.
