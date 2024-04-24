@@ -901,15 +901,10 @@ function savePlate(type) {
     });
 }
 
-const token = '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';
 const apiUrl = 'https://api.github.com/repos/SkyHighModifications/NumberPlateCreator/releases/latest';
 
 $(document).ready(function() {
-    fetch(apiUrl, {
-        headers: {
-            Authorization: `token ${token}`
-        }
-    })
+    fetch(apiUrl)
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -918,24 +913,25 @@ $(document).ready(function() {
         return response.json();
     })
     .then(data => {
-    $('#versionNumber').html(vChecker);
-    setTimeout(() => {
-    const latestVersion = data.tag_name.replace('v', '');
-    if (compareVersions(currentVersion, latestVersion) === 0) {
-        $('#versionNumber').html("<span style='color: #18FC03; cursor: pointer; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 16px;' title='Up to date''>⦿</span> | V " + currentVersion + " " + versionType);
-    } else if (compareVersions(currentVersion, latestVersion) < 0) {
-        $('#versionNumber').html("<span style='animation: flash 1s infinite; color: #FFA500; cursor: pointer; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 16px;' title='Update Available - Click to update''>⦿</span> | V " + currentVersion + " " + versionType);
-        $('#versionNumber').click(function() {
-            window.open(data.html_url, '_blank');
-        }); 
-    } else if (compareVersions(currentVersion, latestVersion) > 0) {
-        $('#versionNumber').html("<span style='font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 16px;'>⛔</span> Your version surpasses the current one (CHEAT) | V " + currentVersion + " " + versionType);
-    } }, 8000);
-})
-.catch(error => {
-    console.error('Error fetching latest release:', error);
-    $('#versionNumber').html("<span style='color: black; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 13px;</span>" + checkFail);
-});
+        $('#versionNumber').html(vChecker);
+        setTimeout(() => {
+            const latestVersion = data.tag_name.replace('v', '');
+            if (compareVersions(currentVersion, latestVersion) === 0) {
+                $('#versionNumber').html("<span style='color: #18FC03; cursor: pointer; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 16px;' title='Up to date''>⦿</span> | V " + currentVersion + " " + versionType);
+            } else if (compareVersions(currentVersion, latestVersion) < 0) {
+                $('#versionNumber').html("<span style='animation: flash 1s infinite; color: #FFA500; cursor: pointer; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 16px;' title='Update Available - Click to update''>⦿</span> | V " + currentVersion + " " + versionType);
+                $('#versionNumber').click(function() {
+                    window.open(data.html_url, '_blank');
+                }); 
+            } else if (compareVersions(currentVersion, latestVersion) > 0) {
+                $('#versionNumber').html("<span style='font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 16px;'>⛔</span> Your version surpasses the current one (CHEAT) | V " + currentVersion + " " + versionType);
+            }
+        }, 8000);
+    })
+    .catch(error => {
+        console.error('Error fetching latest release:', error);
+        $('#versionNumber').html("<span style='color: black; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 13px;</span>" + checkFail);
+    });
 });
 
 function compareVersions(a, b) {
@@ -954,6 +950,7 @@ function compareVersions(a, b) {
 
     return 0;
 }
+
 
 setTimeout(function() {
     document.getElementById("loader").style.display = "none";
