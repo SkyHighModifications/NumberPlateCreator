@@ -1,5 +1,13 @@
 # Changelog 
 
+## V1.1.0 Public
+
+- Addressed visual inconsistencies such as adjusting the plate's background color and enhancing text legibility.
+- Rectified an issue where text alignment was incorrect when incorporating a badge.
+- Resolved a bug causing plates to occasionally save larger than intended dimensions.
+
+#
+
 ## V1.0.0 Public
 
 - Implemented Plate Customization feature
