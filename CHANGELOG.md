@@ -1,5 +1,13 @@
 # Changelog 
 
+## V1.2.0 Public
+
+- Addressed plate color inconsistency, ensuring that color changes no longer result in glitches where parts of the plate display different colors.
+- Rectified a rare bug causing text misalignment, ensuring that text now consistently centers properly on the plate.
+- Elevated the visual appeal of the creator. 
+
+#
+
 ## V1.1.1 Public
 
 - Resolved issue with update verification failure from GitHub.
