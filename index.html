@@ -69,28 +69,25 @@
             text-align: center;
             box-shadow: 0px 0px 30px #0051ff;
         }
-        .plate-text {
-            font-family: 'Charles Wright', sans-serif;
-            font-size: 195px; 
-            margin-left: 0;
-        }
+
         .plate {
+            font-family: 'Charles Wright', sans-serif;
             position: relative;
             text-align: center;
             border-radius: 10px;
-            margin-bottom: 5px;
+            margin-bottom: 25px;
             color: #000;
             font-size: 195px;
-            line-height: 100%;
-            top: -15px;
-            padding: 20px; 
+            line-height: 235px;
         }
         .front {
-            background: linear-gradient(180deg, #ffffff, #c7c7c7);
+            /*background: linear-gradient(180deg, #ffffff, #c7c7c7);*/
+            background-color: #FFFFFF;
         }
 
-        .back {
-            background: linear-gradient(180deg, #FFA500, #ca8401);
+        .back  {
+           /* background: linear-gradient(180deg, #FFA500, #ca8401);*/
+            background-color: #FFA500;
         }
         input[type="text"] {
             width: 290px;
@@ -164,7 +161,7 @@
         .slogan {
             font-family: Arial, Helvetica, sans-serif;
             position: absolute; 
-            bottom: 12px;
+            bottom: 11px;
             left: 50%; 
             transform: translateX(-50%); 
             font-size: 17px; 
@@ -373,15 +370,6 @@
             }
         }
 
-        @keyframes animate {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
         @keyframes flash {
             0% {
                 opacity: 1;
@@ -427,7 +415,7 @@
     </div>
 </div>
 </div>
-<div id="content" style="display:none;">
+<div id="content" style="display:block;">
 <body>
     <div class="container">
         <img src="https://images-ext-1.discordapp.net/external/cfZ3RlXN--YJY-bkCSTKzlxSUclmbEKaXn6G2UM4HN8/https/dunb17ur4ymx4.cloudfront.net/webstore/logos/c9918d684db0753709b93ab97d09dafdf9a63f0e.png?format=webp&quality=lossless&width=565&height=556" alt="Your Logo" class="logo">
@@ -524,10 +512,10 @@
                     <div class="plate-text" id="frontPlate">AB12 CDE</div>
                 </div>
             </div>
-            </div>            
+        </div>           
             <div class="slogan" id="frontSlogan">SkyHigh Modifications</div>
             <div class="electric-box" id="frontGreenBox"></div>
-            <div class="background" id="frontBackground"></div>
+            <div class="fbackground" id="frontBackground"></div>
             <div class="border" id="frontBorder"></div>
             <div class="bottom-right" id="frontStamp">BSAU145d</div>
         </div>
@@ -541,7 +529,7 @@
         </div>
             <div class="slogan" id="backSlogan">SkyHigh Modifications</div>
             <div class="electric-box" id="backGreenBox"></div>
-            <div class="background" id="backBackground"></div>
+            <div class="bbackground" id="backBackground"></div>
             <div class="border" id="backBorder"></div>
             <div class="bottom-right" id="backStamp">BSAU145d</div>
         </div>
@@ -589,15 +577,12 @@ const backStamp = document.getElementById("backStamp");
 const borderColorSelect = document.getElementById("borderEffect");
 const borderColorInput = document.getElementById("borderColor");
 
-plateInput.addEventListener("input", function() {
-    updatePlate();
-    changePlateFont();
-});
-colorPicker.addEventListener("change", function() {
-    changePlateColor();
-    changeTextColor();
-});
+plateInput.addEventListener("input", updatePlate);
 sloganInput.addEventListener("input", updateSlogan);
+colorPicker.addEventListener("change", function() {
+    changeTextColor();
+    changePlateColor();
+});
 styleSelect.addEventListener("change", toggleBoxStyle);
 stampSelect.addEventListener("change", toggleStamp);
 
@@ -622,15 +607,16 @@ function updateSlogan() {
 
 function changePlateFont() {
     const selectedFont = document.getElementById("fontSelect").value;
-    const plateTexts = document.querySelectorAll('.plate-text, .plate');
+    const plateTexts = document.querySelectorAll('.plate');
     plateTexts.forEach(text => {
         text.style.fontFamily = selectedFont;
         if (selectedFont == "'Charles Wright', sans-serif") {
-            text.style.padding = "10px";
+            text.style.padding = "20px";
+            text.style.fontSize = '195px';
         }
         else if (selectedFont !== "'Charles Wright', sans-serif") {
-            text.style.padding = "15px";
-            text.style.fontSize = '180px';
+            text.style.padding = "20px";
+            text.style.fontSize = '185px';
         }
     });
 }
@@ -821,12 +807,14 @@ function TintPlate() {
 
 
 function applyStandardPlateStyle() {
-    const frontPlate = document.getElementById('frontPlate');
-    const backPlate = document.getElementById('backPlate');
-    frontPlate.style.background = 'linear-gradient(180deg, #ffffff, #c7c7c7)';
-    backPlate.style.background = 'linear-gradient(180deg, #FFA500, #ca8401)';
+    /*frontPlate.style.background = 'linear-gradient(180deg, #ffffff, #c7c7c7)';*/
+    /*backPlate.style.background = 'linear-gradient(180deg, #FFA500, #ca8401)';*/
+    frontPlate.style.backgroundColor = '#FFFFFF';
+    backPlate.style.backgroundColor = '#FFA500';
     frontPlate.style.borderRadius = "10px";
     backPlate.style.borderRadius = "10px";
+    frontPlate.style.lineHeight = "235px";
+    backPlate.style.lineHeight = "235px";
     
     const plateTexts = document.querySelectorAll('.plate-text');
     plateTexts.forEach(text => {
@@ -839,14 +827,14 @@ function applyStandardPlateStyle() {
 }
 
 function applyOldPlateStyle() {
-    const frontPlate = document.getElementById('frontPlate');
-    const backPlate = document.getElementById('backPlate');
     frontPlate.style.backgroundColor = '#000';
     backPlate.style.backgroundColor = '#000';
     frontPlate.style.borderRadius = "10px";
     backPlate.style.borderRadius = "10px";
     frontPlate.style.textShadow = '2px 2px 2px rgba(105,105,105, 1.0)';
     backPlate.style.textShadow = '2px 2px 2px rgba(105,105,105, 1.0)';
+    frontPlate.style.lineHeight = "235px";
+    backPlate.style.lineHeight = "235px";
 
     const plateTexts = document.querySelectorAll('.plate-text');
     plateTexts.forEach(text => {
@@ -860,12 +848,15 @@ function applyOldPlateStyle() {
 }
 
 function TintedPlate() {
-    const frontPlate = document.getElementById('frontPlate');
-    const backPlate = document.getElementById('backPlate');
     frontPlate.style.backgroundColor = 'rgba(0,0,0, 0.5)';
     backPlate.style.backgroundColor = 'rgba(0,0,0, 0.5)';
     frontPlate.style.borderRadius = "10px";
     backPlate.style.borderRadius = "10px";
+    frontPlate.style.lineHeight = "235px";
+    backPlate.style.lineHeight = "235px";
+    frontPlate.style.zIndex = "2";
+    backPlate.style.zIndex = "2";
+
 }
 
 function saveBothPlates() {
