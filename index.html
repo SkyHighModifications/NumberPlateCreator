@@ -7,12 +7,13 @@
     <title>Number Plate Creator</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/charles-wright" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="icon" type="image/jpg" href="https://dunb17ur4ymx4.cloudfront.net/webstore/logos/c9918d684db0753709b93ab97d09dafdf9a63f0e.png">
 <script>
-    const currentVersion = '1.2.0';
+    const currentVersion = '1.2.1';
     const versionType = 'PUBLIC';
     const checkFail = 'Version verification unsuccessful';
     const vChecker = 'Checking for updates...';
@@ -390,6 +391,18 @@
                 transform: rotate(360deg);
             }
         }
+        .icon {
+            font-size: 80px;
+            color: #FFFFFF;
+            position: relative;
+            top: -30%;
+        }
+        .icon1 {
+            font-size: 80px;
+            color: #FFA500;
+            position: relative;
+            top: -30%; 
+        }
 </style>
 </head>
 <div class="loader-container">
@@ -423,6 +436,7 @@
         <p>Empower yourself to craft and preserve custom number plates, seamlessly integrating them into your personalized vehicle designs for Grand Theft Auto V or any other creative project you have in mind.</p>
         <input type="text" id="plateInput" placeholder="Enter number plate eg:(AB12 CDE)" />
         <input type="text" id="sloganInput" placeholder="Enter plate slogan eg:(SkyHigh Modifications)" />
+        <input type="text" id="BSDInput" placeholder="Enter plate BSD eg:(BSAU145d)" />
         <br></br> 
         <label class="label-inline" for="plateStyleSelect">Style:</label>
         <select id="plateStyleSelect" onchange="changePlateStyle()">
@@ -514,7 +528,7 @@
             </div>
         </div>           
             <div class="slogan" id="frontSlogan">SkyHigh Modifications</div>
-            <div class="electric-box" id="frontGreenBox"></div>
+            <div class="electric-box" id="frontGreenBox"><i id="frontBoxIcon" class="fa-solid fa-bolt-lightning icon"></i></div>
             <div class="fbackground" id="frontBackground"></div>
             <div class="border" id="frontBorder"></div>
             <div class="bottom-right" id="frontStamp">BSAU145d</div>
@@ -528,7 +542,7 @@
             </div>
         </div>
             <div class="slogan" id="backSlogan">SkyHigh Modifications</div>
-            <div class="electric-box" id="backGreenBox"></div>
+            <div class="electric-box" id="backGreenBox"><i id="backBoxIcon" class="fa-solid fa-bolt-lightning icon1"></i></div>
             <div class="bbackground" id="backBackground"></div>
             <div class="border" id="backBorder"></div>
             <div class="bottom-right" id="backStamp">BSAU145d</div>
@@ -564,8 +578,11 @@ const sloganInput = document.getElementById("sloganInput");
 const frontPlate = document.getElementById("frontPlate");
 const backPlate = document.getElementById("backPlate");
 const frontSlogan = document.getElementById("frontSlogan");
+const BSDInput = document.getElementById("BSDInput");
 const backSlogan = document.getElementById("backSlogan");
 const frontGreenBox = document.getElementById("frontGreenBox");
+const frontBoxIcon = document.getElementById("frontBoxIcon");
+const backBoxIcon = document.getElementById("backBoxIcon");
 const backGreenBox = document.getElementById("backGreenBox");
 const styleSelect = document.getElementById("styleSelect");
 const frontBorder = document.getElementById("frontBorder");
@@ -579,6 +596,7 @@ const borderColorInput = document.getElementById("borderColor");
 
 plateInput.addEventListener("input", updatePlate);
 sloganInput.addEventListener("input", updateSlogan);
+BSDInput.addEventListener("input", updateBSD);
 colorPicker.addEventListener("change", function() {
     changeTextColor();
     changePlateColor();
@@ -603,6 +621,12 @@ function updateSlogan() {
     const sloganText = sloganInput.value;
     frontSlogan.textContent = sloganText || "SkyHigh Modifications";
     backSlogan.textContent = sloganText || "SkyHigh Modifications";
+}
+
+function updateBSD() {
+    const BSDText = BSDInput.value;
+    frontStamp.textContent = BSDText || "BSAU145d";
+    backStamp.textContent = BSDText || "BSAU145d";
 }
 
 function changePlateFont() {
@@ -730,8 +754,20 @@ function changePlateColor() {
     const plates = document.querySelectorAll('.plate');
     plates.forEach(plate => {
         plate.style.background = `linear-gradient(180deg, ${plateColor}, ${plateColor})`;
+
+        const icon = plate.querySelector('.icon');
+        const icon1 = plate.querySelector('.icon1');
+
+        // Update icon color
+        if (icon) {
+            icon.style.color = plateColor;
+        }
+        if (icon1) {
+            icon1.style.color = plateColor;
+        }
     });
 }
+
 
 function changeBorderColor() {
     const borderColor = document.getElementById("borderColor").value;
@@ -989,5 +1025,6 @@ function animateLoading() {
 animateLoading();
 });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 </body>
 </html>
