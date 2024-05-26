@@ -1,5 +1,12 @@
 # Changelog 
 
+## V1.2.1 Public
+
+- You now have the ability to modify the text displayed in the section labeled `'BSAU145d'`.
+- Upon selecting the "Electric" badge, icons are now displayed within the corresponding box.
+
+#
+
 ## V1.2.0 Public
 
 - Addressed plate color inconsistency, ensuring that color changes no longer result in glitches where parts of the plate display different colors.
